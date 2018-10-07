@@ -1,20 +1,36 @@
 package com.henshuai.meitameifa.utils;
 
-//һ���ǳ�����򵥵�dp2px��px2dp�๤��
+//一个非常纯粹简单的dp2px，px2dp类工具
 import android.content.Context;
 
 public class DensityUtils {
-
-    public static int dip2px(float dp, Context ctx) {
-        float density = ctx.getResources().getDisplayMetrics().density;
-        int px = (int) (dp * density + 0.5f);
-        return px;
+    /**
+     * dp转换成px
+     */
+    private int dp2px(Context context,float dpValue){
+        float scale=context.getResources().getDisplayMetrics().density;
+        return (int)(dpValue*scale+0.5f);
     }
 
-    public static float px2dip(int px, Context ctx) {
-        float density = ctx.getResources().getDisplayMetrics().density;
-        float dip = px / density;
-        return dip;
+    /**
+     * px转换成dp
+     */
+    private int px2dp(Context context,float pxValue){
+        float scale=context.getResources().getDisplayMetrics().density;
+        return (int)(pxValue/scale+0.5f);
     }
-
+    /**
+     * sp转换成px
+     */
+    private int sp2px(Context context,float spValue){
+        float fontScale=context.getResources().getDisplayMetrics().scaledDensity;
+        return (int) (spValue*fontScale+0.5f);
+    }
+    /**
+     * px转换成sp
+     */
+    private int px2sp(Context context,float pxValue){
+        float fontScale=context.getResources().getDisplayMetrics().scaledDensity;
+        return (int) (pxValue/fontScale+0.5f);
+    }
 }
